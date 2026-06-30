@@ -1,0 +1,7 @@
+-r requirements.txt
+xgboost>=1.7
+catboost>=1.2
+torch>=2.0
+# hnswlib is optional and can be installed separately if ANN retrieval experiments are needed.
+# TensorFlow/Keras models are optional; see requirements-tensorflow.txt because
+# TensorFlow wheels depend strongly on Python version and platform.

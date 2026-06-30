@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+title: "Passive Wi-Fi Probe Request Fingerprinting Localization Benchmark"
+message: "If you use this code or dataset, please cite the associated manuscript."
+type: software
+
+authors:
+  - family-names: Elrifaee
+    given-names: Mohamed
+  - family-names: Mansour
+    given-names: Ahmed
+    email: ahmed.m.mostafa@connect.polyu.hk
+  - family-names: Zayed
+    given-names: Tarek
+
+repository-code: "https://github.com/AhmedMansoour/passive-pr-fingerprinting-benchmark"
+license: CC-BY-4.0
+version: "1.0.0"
+date-released: "2026-06-24"
+
+preferred-citation:
+  type: unpublished
+  title: "An End-to-End Pipeline for Passive Wi-Fi Probe Request Fingerprinting-Based Localization with Comparative Evaluation from Classical Retrieval to Attention-Based Models"
+  authors:
+    - family-names: Elrifaee
+      given-names: Mohamed
+    - family-names: Mansour
+      given-names: Ahmed
+      email: ahmed.m.mostafa@connect.polyu.hk
+    - family-names: Zayed
+      given-names: Tarek
+  year: 2026
+  notes: "Manuscript under review at the Journal of Network and Computer Applications."

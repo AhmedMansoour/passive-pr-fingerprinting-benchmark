@@ -1,0 +1,18 @@
+================================================================================
+ENSEMBLE BENCHMARK - RF, XGBoost, CatBoost, Gradient Boosting
+================================================================================
+Data: 36 train, 9 test
+
+[Random Forest]
+  RandomForest: 2.322 +/- 0.130 m (over 5 seeds)
+
+[Gradient Boosting]
+  GradientBoosting: 2.639 +/- 0.038 m (over 5 seeds)
+
+[XGBoost]
+  XGBoost (best): 3.129 m, params={'n_estimators': 50, 'max_depth': 3, 'learning_rate': 0.1}
+
+[CatBoost]
+  CatBoost: 2.632 m
+
+Results saved to results/ensemble_benchmark.csv

@@ -1,0 +1,3 @@
+-r requirements.txt
+# Install only in Python/platform combinations with available TensorFlow wheels.
+tensorflow>=2.12

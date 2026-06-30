@@ -1,0 +1,24 @@
+================================================================================
+Generating paper-output archive
+================================================================================
+[FIG] xyaps.png
+[FIG] setup.png
+[FIG] kwnn_2.pdf
+[FIG] kwnn_MAP.pdf
+[FIG] hnsw_k_accuracy_trend.pdf
+[FIG] tree-based.pdf
+[FIG] ann_architectures_scaled.pdf
+[FIG] transformers_arch_pointwise_errors_with_box.pdf
+[FIG] ann_sensitivity_times_new_roman.png
+[FIG] model_sensitivity_epochs.pdf
+[FIG] trans_refine_MEE_grid.pdf
+[FIG] lollipop_median_desc_familycolors_VERTICAL.pdf
+[FIG] lollipop_max_desc_familycolors_VERTICAL.pdf
+[FIG] latency_lollipop_methods_vertical_family_log.pdf
+[FIG] model_comparison_comprehensive.pdf
+[FIG] knn-based_xy.pdf
+[FIG] tree-based_xy.pdf
+[FIG] ann_architectures_xy_subset.pdf
+[FIG] arch3_arch4_xy_meters_transformer.pdf
+[FIG] methods_bxp_statistical.pdf
+[OK] Paper-output archive generated in 6.7s

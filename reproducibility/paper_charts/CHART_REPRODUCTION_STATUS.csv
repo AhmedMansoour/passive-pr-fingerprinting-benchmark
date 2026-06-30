@@ -1,0 +1,24 @@
+chart_file,reference_exists,generated_exists,paper_output_exists,reference_size_bytes,generated_size_bytes,reference_md5,generated_md5,source
+Aps.pdf,True,True,True,13865,10416,be145ec4dbd8384d60d6aa37912bf1fd,f978a8eb6cc19a1c2e5ee380674e77e7,radiomaps.ipynb::cell 8
+ann_architectures_scaled.pdf,True,True,True,36921,20095,cf88b536eac7cd9265365f63b269bd17,204ddba93e860c7891450d50d415d993,nn_senstivity.ipynb::cell 7
+ann_architectures_xy_subset.pdf,True,True,True,26963,13737,d5218854456e6067d82ff42982168bc1,81279e7d9121de343488ee61fddfa254,nn_senstivity.ipynb::cell 9
+ann_sensitivity_times_new_roman.png,True,True,True,597391,591205,ad0844f199a0551a076e69719091418f,72d9c9eb242f334dbb85ac0d04b7c9df,nn_senstivity.ipynb::cell 3
+ap_density_sensitivity.pdf,True,True,True,21394,21390,bc95113b5e7e21cedd43b1de65ee010b,134d3b3d5b38274aee379b490051ab6d,experiments/run_ap_density_analysis.py::added from release/attached fig
+aps.png,True,True,True,193736,338700,c44b2b7eacea9f590447c932aa448adf,19981fd9cce63ae91a932b5a05769a52,radiomaps.ipynb::manual-export/no savefig call detected
+arch3_arch4_xy_meters_transformer.pdf,True,True,True,15522,12529,15b4348a3dfd9a68d15492f3193aa75a,0b4a5e20da867dfa8aaf2121f81b9e31,best transformer than kwnn.ipynb::cell 9
+fingerprints.jpg,True,True,True,176455,216917,e2a818f23dfb244feb4d02ce4ac11749,ccef9bccc96b89c39a737844742dc119,new script required::not found in all-original-scripts
+hnsw_k_accuracy_trend.pdf,True,True,True,24687,20320,9be8b485acbd5b419d6421cd5fb469d2,1515db9ca250060d360ca396586528f2,Untitled1.ipynb::cell 6
+kalman_kwnn_plot.pdf,True,True,True,24124,19966,98f1f7232f4df55246d9890ea49fb258,2b9f2b09c0cfc1408601df84d7d695f4,KF_KWNN_passive.ipynb::cell 5
+knn-based_xy.pdf,True,True,True,16700,14064,e810ac48355d0fdb14a790837cfbc920,4b487535231d20e5e3f03852b04c8abb,KWNN XY LOCATIONS.ipynb::cell 4
+kwnn_2.pdf,True,True,True,24444,20227,20f073f37e5ee55a8fff376d26cbd4dc,58391aac83d31e7624ea6dd2363e5b7c,Traditional_KWNN_passive.ipynb::cell 5
+kwnn_MAP.pdf,True,True,True,26389,22210,d0b690b0514231547bcd0a4a4e6cccd0,63470ab01443ec7c9170e4edd8516d5b,Working_KWNN_MaP_passive.ipynb::cell 6
+latency_lollipop_methods_vertical_family_log.pdf,True,True,True,25380,21371,389a6996fff15633974337e7e2e2cf0a,5f7f7be82101363875059f7b459f91e1,df_all_methods.ipynb::cell 11
+lollipop_max_desc_familycolors_VERTICAL.pdf,True,True,True,26134,20780,45b8212250128036237bde3fddac9f41,03ea311fdc79a89692c3182d6d6f89d2,df_all_methods.ipynb::cell 9
+lollipop_median_desc_familycolors_VERTICAL.pdf,True,True,True,24060,19138,96a66a2e2c13da060f2ec15a8d769ae6,d4181758b1d19fd27619158601d4b9d9,df_all_methods.ipynb::cell 8
+methods_bxp_statistical.pdf,True,True,True,27470,21773,518e01c286667db15883626e95c6d275,9f5946519af31dfb32fdf8c91e583eb1,df_all_methods.ipynb::cell 2
+model_comparison_comprehensive.pdf,True,True,True,57675,37418,ac864f5fd240267e67431e2958e01231,6bcaeeb690dc2f98701969bcb092d65c,plots/generate_paper_figures.py::added from release/attached fig
+trans_refine_MEE_grid.pdf,True,True,True,31785,26311,64638acbfabb0c250074dbc6cf9d4813,00a2f8e1db1df565802074a6f1113825,transformer_well_perform.ipynb::cell 40; transformer_well_perform - Copy.ipynb::cell 40
+transformers_arch_pointwise_errors_with_box.pdf,True,True,True,16809,14046,6e7482f5803018d5a314ee09f46da58e,c845e0315e59ef501fa71ca7d4489fbb,best transformer than kwnn.ipynb::cell 6
+tree-based.pdf,True,True,True,21725,17891,285f9b9da6075f073b570df191144015,e4dd002bcde541ff846d00955cd389c1,tree-based.ipynb::cell 22
+tree-based_xy.pdf,True,True,True,18798,16295,4c98a56eb4978bf8687e61c62d42f73c,53f7288ec4798ccfecbfbe7a4ec665b8,tree-based.ipynb::cell 13
+xyaps.png,True,True,True,195096,356977,369150f19f2da6924c104acbdee891be,ae7d2d3cf33e9af717c4b3ce2e2da448,radiomaps.ipynb::manual-export/no savefig call detected

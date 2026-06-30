@@ -1,0 +1,21 @@
+================================================================================
+LATENCY BENCHMARK
+================================================================================
+
+[KWNN]
+  KWNN_euclidean_k3: 0.2794 ms
+  KWNN_manhattan_k3: 0.3136 ms
+  KWNN_euclidean_k6: 0.2458 ms
+  KWNN_manhattan_k6: 0.2634 ms
+
+[MLP sklearn]
+  MLP_Arch1_3Layer: 0.0359 ms
+  MLP_Arch2_4Layer: 0.0641 ms
+
+[Random Forest]
+  RandomForest: 52.5852 ms
+
+[Gradient Boosting]
+  GradientBoosting: 0.3174 ms
+
+Saved to results/latency_benchmark.csv

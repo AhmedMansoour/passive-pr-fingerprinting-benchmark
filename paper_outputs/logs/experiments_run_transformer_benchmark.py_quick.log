@@ -1,0 +1,12 @@
+================================================================================
+TRANSFORMER BENCHMARK - TensorFlow, PyTorch Improved
+================================================================================
+Data: 36 train, 9 test
+
+[TensorFlow Transformer - multi-seed]
+  [SKIP] TensorFlow not installed
+
+[PyTorch Improved Transformer - multi-seed]
+  Transformer_Improved_S: 14.033 +/- 0.000 m
+
+Results saved to results/transformer_benchmark_quick.csv

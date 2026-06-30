@@ -1,0 +1,4 @@
+method,mean_m,std_m
+sklearn_MLP_Arch1_3Layer,14.035421629575147,0.0
+sklearn_MLP_Arch2_4Layer,14.034396675086663,0.0
+pytorch_ANN_Improved_S,14.036511496816154,0.0

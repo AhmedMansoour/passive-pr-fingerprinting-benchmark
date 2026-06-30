@@ -1,0 +1,5 @@
+method,mean_m,median_m,max_m,latency_ms
+ANN Arch. 1,2.74,2.55,5.7,108.81
+ANN Arch. 2,2.67,1.96,6.49,117.71
+ANN Arch. 3,2.65,2.71,6.02,112.52
+ANN Arch. 4,2.62,1.94,6.62,108.99

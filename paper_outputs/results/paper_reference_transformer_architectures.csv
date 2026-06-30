@@ -1,0 +1,5 @@
+method,mean_m,median_m,max_m,latency_ms
+TF Arch. 1,3.52,2.01,7.71,1.08
+TF Arch. 2,3.29,1.79,7.17,0.69
+TF Arch. 3,3.3,2.97,6.29,1.21
+TF Arch. 4,2.19,1.7,4.53,0.8

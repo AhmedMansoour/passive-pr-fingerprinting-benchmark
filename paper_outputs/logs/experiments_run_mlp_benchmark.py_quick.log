@@ -1,0 +1,15 @@
+================================================================================
+MLP BENCHMARK - sklearn, TensorFlow, PyTorch Improved
+================================================================================
+Data: 36 train, 9 test
+
+[sklearn MLP - multi-seed]
+  MLP_Arch1_3Layer: 14.035 +/- 0.000 m
+
+[TensorFlow MLP - multi-seed]
+  [SKIP] TensorFlow not installed
+
+[PyTorch Improved MLP - multi-seed]
+  ANN_Improved_S: 14.037 +/- 0.000 m
+
+Results saved to results/mlp_benchmark_quick.csv
