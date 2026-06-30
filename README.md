@@ -9,6 +9,116 @@ This repository accompanies the manuscript **“An End-to-End Pipeline for Passi
 
 The repository provides an anonymized passive Wi-Fi probe-request dataset, derived fingerprint matrices, benchmark scripts, reference result tables, paper-output figures, and reproducibility instructions for comparing passive PR fingerprinting localization methods in one controlled indoor testbed.
 
+## Visual Overview
+
+This repository accompanies a benchmark-oriented study of passive Wi-Fi probe-request fingerprinting localization. The figures below summarize the full story, from the passive sensing principle and data-acquisition pipeline to the evaluated model families and key benchmark findings.
+
+### 1. Passive Wi-Fi Probe-Request Fingerprinting
+
+Passive probe-request fingerprinting differs from conventional active Wi-Fi RSS fingerprinting. In the active setting, the user device scans surrounding APs and sends an RSS vector to a localization server. In the passive setting, monitor-mode APs or passive sniffers capture probe-request frames emitted by the device, and the localization pipeline is performed on the infrastructure side.
+
+<p align="center">
+  <img src="paper_outputs/figures/pr.png" alt="Active Wi-Fi RSS fingerprinting versus passive Wi-Fi probe-request fingerprinting" width="900">
+</p>
+
+### 2. End-to-End Benchmark Pipeline
+
+The benchmark follows a unified end-to-end workflow: passive PR data acquisition, centralized packet logging, preprocessing, fingerprint construction, controlled cross-family localization benchmarking, and deployment-sensitivity analysis.
+
+<p align="center">
+  <img src="paper_outputs/figures/setupa.png" alt="End-to-end pipeline for passive Wi-Fi probe-request fingerprinting localization" width="1000">
+</p>
+
+### 3. Application Context
+
+Passive Wi-Fi probe-request sensing can support infrastructure-side spatial awareness in healthcare, retail, venue management, occupancy analytics, and emergency response. This benchmark focuses specifically on the localization-oriented part of this broader sensing landscape.
+
+<p align="center">
+  <img src="paper_outputs/figures/wifi_pr_tree_rightangle.png" alt="Passive Wi-Fi probe-request sensing applications" width="950">
+</p>
+
+### 4. Centralized Passive PR Collection
+
+The data-acquisition setup uses multiple monitor-mode AP streams, centralized `ncat` listeners, and separate log files for each AP. This structure enables synchronized multi-AP passive packet capture and reproducible fingerprint construction.
+
+<p align="center">
+  <img src="paper_outputs/figures/combined_ncat_diagram.png" alt="Centralized passive probe-request data collection architecture" width="900">
+</p>
+
+## Benchmarked Model Families
+
+The repository evaluates representative localization paradigms under the same passive PR fingerprint matrix, train-test split, and coordinate-based evaluation protocol.
+
+### Retrieval-Based and Scalable Fingerprint Matching
+
+The HNSW pipeline accelerates nearest-neighbor retrieval while preserving the fingerprint-matching logic of classical KWNN localization.
+
+<p align="center">
+  <img src="paper_outputs/figures/hnsw_pipeline_outputs.png" alt="HNSW-based approximate nearest-neighbor localization pipeline" width="650">
+</p>
+
+### Tree-Based Ensemble Models
+
+Tree-based regressors provide nonlinear supervised baselines between classical retrieval and higher-capacity neural models.
+
+<p align="center">
+  <img src="paper_outputs/figures/randomforest.png" alt="Random Forest localization pipeline" width="850">
+</p>
+
+<p align="center">
+  <img src="paper_outputs/figures/XGBoost.png" alt="XGBoost localization pipeline" width="850">
+</p>
+
+<p align="center">
+  <img src="paper_outputs/figures/CatBoost.png" alt="CatBoost localization pipeline" width="850">
+</p>
+
+### Neural and Attention-Based Models
+
+The benchmark also includes MLP-based neural architectures and Transformer-style attention-based models to assess whether higher-capacity learned representations improve passive PR localization under common benchmark conditions.
+
+<p align="center">
+  <img src="paper_outputs/figures/mlp_baseline.png" alt="Baseline MLP architecture for RSS fingerprint localization" width="900">
+</p>
+
+<p align="center">
+  <img src="paper_outputs/figures/ann_sensitivity_times_new_roman.png" alt="ANN sensitivity analysis for RMSE and latency across training epochs" width="900">
+</p>
+
+## Key Benchmark Findings
+
+The benchmark does not support a simple “deeper is always better” conclusion. Instead, the evaluated methods occupy different regions of the accuracy, robustness, latency, and deployment-sensitivity trade-off space.
+
+### Cross-Family Accuracy-Latency Trade-Off
+
+The strongest retrieval methods remain highly competitive for typical-case accuracy and latency. The best-performing attention-based configuration provides favorable large-error control while retaining low inference time.
+
+<p align="center">
+  <img src="paper_outputs/figures/model_comparison_comprehensive.png" alt="Comprehensive cross-family comparison of localization error, latency, accuracy-latency trade-off, and robustness" width="1000">
+</p>
+
+### Error Distribution Across Method Families
+
+<p align="center">
+  <img src="paper_outputs/figures/methods_bxp_statistical.png" alt="Cross-family error distribution across statistical, tree-based, ANN, and Transformer methods" width="850">
+</p>
+
+### Transformer-Family Error Behavior
+
+The Transformer-family results show that attention-based modeling is not automatically superior. The most favorable configuration is the regularized AE+Transformer variant, which reduces the upper-tail error in this benchmark.
+
+<p align="center">
+  <img src="paper_outputs/figures/transformers_arch_pointwise_errors_with_box.png" alt="Transformer architecture error distributions" width="750">
+</p>
+
+### Monitor-Node Density and Receiver-Geometry Sensitivity
+
+The deployment-sensitivity analysis shows that localization performance is affected not only by the number of monitor nodes, but also by receiver geometry. These results should be interpreted as within-environment sensitivity findings for the evaluated testbed.
+
+<p align="center">
+  <img src="paper_outputs/figures/ap_density_sensitivity.png" alt="Monitor-node density and receiver-geometry sensitivity analysis" width="850">
+</p>
+
 ## Scope of the benchmark
 
 The benchmark is intentionally **single-environment and reproducibility-oriented**. It supports controlled comparison under a fixed data-acquisition and evaluation protocol, but it should not be interpreted as evidence of broad cross-building, cross-device, or cross-deployment generalization.
