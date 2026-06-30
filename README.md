@@ -9,13 +9,27 @@ This repository accompanies the manuscript **“An End-to-End Pipeline for Passi
 
 The repository provides an anonymized passive Wi-Fi probe-request dataset, derived fingerprint matrices, benchmark scripts, reference result tables, paper-output figures, and reproducibility instructions for comparing passive PR fingerprinting localization methods in one controlled indoor testbed.
 
+## At a Glance
+
+| Component | Included |
+|---|---|
+| Passive PR localization dataset | Yes |
+| Raw anonymized probe-request frames | Yes |
+| Processed fingerprint matrices | Yes |
+| Reproducible benchmark scripts | Yes |
+| Retrieval, ensemble, neural, and attention-based models | Yes |
+| Paper figures and result tables | Yes |
+| Chart reproduction materials | Yes |
+| Identifier sanitization audit | Yes |
+| Public release validation checks | Yes |
+
 ## Visual Overview
 
-This repository accompanies a benchmark-oriented study of passive Wi-Fi probe-request fingerprinting localization. The figures below summarize the full story, from the passive sensing principle and data-acquisition pipeline to the evaluated model families and key benchmark findings.
+This repository is designed to help readers understand the full benchmark story quickly. The figures below move from the passive sensing principle, to the end-to-end pipeline, to the data-acquisition setup, model families, and key benchmark findings.
 
 ### 1. Passive Wi-Fi Probe-Request Fingerprinting
 
-Passive probe-request fingerprinting differs from conventional active Wi-Fi RSS fingerprinting. In the active setting, the user device scans surrounding APs and sends an RSS vector to a localization server. In the passive setting, monitor-mode APs or passive sniffers capture probe-request frames emitted by the device, and the localization pipeline is performed on the infrastructure side.
+Passive probe-request fingerprinting differs from conventional active Wi-Fi RSS fingerprinting. In the active setting, the user device scans surrounding APs and sends an RSS vector to a localization server. In the passive setting, monitor-mode APs or passive sniffers capture probe-request frames emitted by the device, and localization is performed from the infrastructure side.
 
 <p align="center">
   <img src="paper_outputs/figures/pr.png" alt="Active Wi-Fi RSS fingerprinting versus passive Wi-Fi probe-request fingerprinting" width="900">
@@ -42,16 +56,27 @@ Passive Wi-Fi probe-request sensing can support infrastructure-side spatial awar
 The data-acquisition setup uses multiple monitor-mode AP streams, centralized `ncat` listeners, and separate log files for each AP. This structure enables synchronized multi-AP passive packet capture and reproducible fingerprint construction.
 
 <p align="center">
-  <img src="paper_outputs/figures/combined_ncat_diagram.png" alt="Centralized passive probe-request data collection architecture" width="900">
+  <img src="paper_outputs/figures/combined_ncat_diagram.png" alt="Centralized passive probe-request data collection architecture" width="850">
 </p>
+
+## Benchmark Design
+
+The repository evaluates representative localization paradigms under the same passive PR fingerprint matrix, spatially disjoint train-test split, and coordinate-based evaluation protocol.
+
+| Stage | Purpose |
+|---|---|
+| Data acquisition | Capture passive probe-request frames using monitor-mode APs |
+| Centralized logging | Store AP-specific packet streams in synchronized logs |
+| Fingerprint construction | Aggregate RSS observations into AP-wise fingerprint vectors |
+| Benchmark formation | Use 36 reference locations and 9 held-out test locations |
+| Model comparison | Evaluate retrieval, ensemble, neural, and attention-based families |
+| Evaluation | Analyze accuracy, robustness, worst-case error, latency, and receiver-layout sensitivity |
 
 ## Benchmarked Model Families
 
-The repository evaluates representative localization paradigms under the same passive PR fingerprint matrix, train-test split, and coordinate-based evaluation protocol.
-
 ### Retrieval-Based and Scalable Fingerprint Matching
 
-The HNSW pipeline accelerates nearest-neighbor retrieval while preserving the fingerprint-matching logic of classical KWNN localization.
+The retrieval family provides transparent and strong fingerprinting baselines. The HNSW pipeline accelerates nearest-neighbor retrieval while preserving the matching logic of classical KWNN localization.
 
 <p align="center">
   <img src="paper_outputs/figures/hnsw_pipeline_outputs.png" alt="HNSW-based approximate nearest-neighbor localization pipeline" width="650">
@@ -61,28 +86,43 @@ The HNSW pipeline accelerates nearest-neighbor retrieval while preserving the fi
 
 Tree-based regressors provide nonlinear supervised baselines between classical retrieval and higher-capacity neural models.
 
-<p align="center">
-  <img src="paper_outputs/figures/randomforest.png" alt="Random Forest localization pipeline" width="850">
-</p>
-
-<p align="center">
-  <img src="paper_outputs/figures/XGBoost.png" alt="XGBoost localization pipeline" width="850">
-</p>
-
-<p align="center">
-  <img src="paper_outputs/figures/CatBoost.png" alt="CatBoost localization pipeline" width="850">
-</p>
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="paper_outputs/figures/randomforest.png" alt="Random Forest localization pipeline" width="430"><br>
+      <b>Random Forest</b>
+    </td>
+    <td align="center" width="50%">
+      <img src="paper_outputs/figures/XGBoost.png" alt="XGBoost localization pipeline" width="430"><br>
+      <b>XGBoost</b>
+    </td>
+  </tr>
+  <tr>
+    <td align="center" width="50%">
+      <img src="paper_outputs/figures/CatBoost.png" alt="CatBoost localization pipeline" width="430"><br>
+      <b>CatBoost</b>
+    </td>
+    <td align="center" width="50%">
+      <img src="paper_outputs/figures/mlp_baseline.png" alt="Baseline MLP architecture for RSS fingerprint localization" width="430"><br>
+      <b>Baseline MLP</b>
+    </td>
+  </tr>
+</table>
 
 ### Neural and Attention-Based Models
 
 The benchmark also includes MLP-based neural architectures and Transformer-style attention-based models to assess whether higher-capacity learned representations improve passive PR localization under common benchmark conditions.
 
 <p align="center">
-  <img src="paper_outputs/figures/mlp_baseline.png" alt="Baseline MLP architecture for RSS fingerprint localization" width="900">
+  <img src="paper_outputs/figures/ann_architectures_scaled.png" alt="MLP architecture comparison for passive PR fingerprint localization" width="950">
 </p>
 
 <p align="center">
   <img src="paper_outputs/figures/ann_sensitivity_times_new_roman.png" alt="ANN sensitivity analysis for RMSE and latency across training epochs" width="900">
+</p>
+
+<p align="center">
+  <img src="paper_outputs/figures/arch3_arch4_xy_meters_transformer.png" alt="Spatial prediction comparison between Transformer architectures 3 and 4" width="750">
 </p>
 
 ## Key Benchmark Findings
@@ -91,13 +131,15 @@ The benchmark does not support a simple “deeper is always better” conclusion
 
 ### Cross-Family Accuracy-Latency Trade-Off
 
-The strongest retrieval methods remain highly competitive for typical-case accuracy and latency. The best-performing attention-based configuration provides favorable large-error control while retaining low inference time.
+The strongest retrieval methods remain highly competitive for typical-case accuracy and latency. The most favorable attention-based configuration provides strong large-error control while retaining low inference time.
 
 <p align="center">
   <img src="paper_outputs/figures/model_comparison_comprehensive.png" alt="Comprehensive cross-family comparison of localization error, latency, accuracy-latency trade-off, and robustness" width="1000">
 </p>
 
 ### Error Distribution Across Method Families
+
+The cross-family error distributions show that retrieval methods remain strong typical-case baselines, while attention-based models become useful when upper-tail error control is emphasized.
 
 <p align="center">
   <img src="paper_outputs/figures/methods_bxp_statistical.png" alt="Cross-family error distribution across statistical, tree-based, ANN, and Transformer methods" width="850">
@@ -119,7 +161,18 @@ The deployment-sensitivity analysis shows that localization performance is affec
   <img src="paper_outputs/figures/ap_density_sensitivity.png" alt="Monitor-node density and receiver-geometry sensitivity analysis" width="850">
 </p>
 
-## Scope of the benchmark
+## Main Takeaways
+
+- Passive PR localization requires an end-to-end benchmark workflow, not only a localization estimator.
+- Classical retrieval methods remain highly competitive under the evaluated passive PR testbed.
+- HNSW indexing preserves KWNN-level accuracy while reducing online retrieval cost.
+- Tree-based ensembles provide useful intermediate operating points.
+- Standard MLP models add computational cost without clear benchmark-level advantage in this dataset.
+- The regularized attention-based configuration improves upper-tail error behavior under the evaluated setting.
+- Monitor-node density and receiver geometry materially affect localization performance within the same environment.
+- The results are benchmark-level findings for one controlled passive PR testbed, not broad cross-building generalization claims.
+
+## Scope of the Benchmark
 
 The benchmark is intentionally **single-environment and reproducibility-oriented**. It supports controlled comparison under a fixed data-acquisition and evaluation protocol, but it should not be interpreted as evidence of broad cross-building, cross-device, or cross-deployment generalization.
 
@@ -133,7 +186,7 @@ The benchmark is intentionally **single-environment and reproducibility-oriented
 | Raw test frames | 2,322 |
 | Coordinate unit | millimeters in raw/processing, meters in reported errors |
 
-## Repository layout
+## Repository Layout
 
 ```text
 .
@@ -161,7 +214,7 @@ The benchmark is intentionally **single-environment and reproducibility-oriented
 └── pyproject.toml              # Project metadata and tooling configuration
 ```
 
-## Quick start
+## Quick Start
 
 ```bash
 # 1. Create and activate an environment
@@ -190,7 +243,7 @@ python experiments/run_kwnn_benchmark.py
 
 The release-verification path is designed to be reviewer-friendly and CPU-safe. It checks the repository structure, data integrity, core benchmark execution, and paper-output availability.
 
-## Full benchmark
+## Full Benchmark
 
 The extended benchmark includes optional packages such as PyTorch, XGBoost, and CatBoost. Install them only when the corresponding model families are needed:
 
@@ -212,7 +265,7 @@ python plots/generate_paper_figures.py
 
 Some extended experiments may take longer and can be sensitive to package versions and hardware. TensorFlow/Keras paths are optional and can be installed separately with `requirements-tensorflow.txt` on supported Python/platform combinations. See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for details.
 
-## Data files
+## Data Files
 
 The repository includes both raw and processed forms of the anonymized dataset.
 
@@ -225,13 +278,13 @@ The repository includes both raw and processed forms of the anonymized dataset.
 
 The raw files use semicolon separators. The processed files use comma separators and are included to make the benchmark easier to inspect and reuse.
 
-## Data anonymization
+## Data Anonymization
 
-The public release does not include the original device MAC addresses or real AP/BSSID identifiers. Device-level identifiers were replaced by deterministic pseudonymous IDs, and AP/BSSID-like identifiers were replaced by generic AP labels such as `ap1`--`ap6`.
+The public release does not include the original device MAC addresses or real AP/BSSID identifiers. Device-level identifiers were replaced by deterministic pseudonymous IDs, and AP/BSSID-like identifiers were replaced by generic AP labels such as `ap1` to `ap6`.
 
 Internal legacy notebooks and raw chart-export files that contained original identifiers were excluded from the public release because they are not required for executing the benchmark or regenerating the paper figures. See [`IDENTIFIER_AUDIT.md`](IDENTIFIER_AUDIT.md) for the identifier-sanitization audit.
 
-## Implemented model families
+## Implemented Model Families
 
 | Family | Representative scripts |
 |---|---|
@@ -243,7 +296,7 @@ Internal legacy notebooks and raw chart-export files that contained original ide
 | Bootstrap uncertainty summaries | `experiments/run_bootstrap_analysis.py` |
 | Monitor-node density sensitivity | `experiments/run_ap_density_analysis.py` |
 
-## Paper-output archive
+## Paper-Output Archive
 
 The manuscript-facing outputs are included under [`paper_outputs/`](paper_outputs/):
 
@@ -256,7 +309,9 @@ The manuscript-facing outputs are included under [`paper_outputs/`](paper_output
 
 The repository separates **executable release verification** from the **paper-output archive**. The executable path is compact and CPU-friendly so that reviewers can check the repository quickly. The paper-output archive preserves the manuscript-facing result tables and all figure files, including reference aggregate values for neural and attention-based experiments that can be hardware- and package-version-sensitive.
 
-## Paper-chart reproduction
+For GitHub README rendering, selected PDF figures are also provided as PNG files in `paper_outputs/figures/`.
+
+## Paper-Chart Reproduction
 
 The repository includes a chart-level reproduction layer that maps submitted paper figures to their plotting scripts and regenerates the manuscript-facing chart files. From the repository root, run:
 
@@ -283,7 +338,7 @@ The provenance table is available at:
 reproducibility/paper_charts/CHART_SOURCE_MAP.csv
 ```
 
-## Reference results
+## Reference Results
 
 Executable benchmark outputs are provided under [`results/`](results/). Manuscript-facing reference tables are archived under [`paper_outputs/results/`](paper_outputs/results/). New runs may overwrite files in `results/`; use `paper_outputs/` for the stable paper-output archive.
 
@@ -291,7 +346,7 @@ Executable benchmark outputs are provided under [`results/`](results/). Manuscri
 
 This benchmark uses one indoor environment, six monitor nodes, 36 reference locations, and 9 held-out test locations. It is designed for controlled within-environment comparison and reproducibility. Model rankings, confidence intervals, latency measurements, and deployment-sensitivity results should therefore be interpreted within the evaluated testbed rather than as universal conclusions across buildings, devices, floors, or receiver layouts.
 
-## Privacy and ethics
+## Privacy and Ethics
 
 The raw data distributed here have been anonymized before release. Original device identifiers and AP/BSSID-like identifiers are not included in the public files. The benchmark uses only the signal, frequency, timestamp, AP-label, location, and coordinate fields required for reproducibility. See [`DATASET_CARD.md`](DATASET_CARD.md) and [`IDENTIFIER_AUDIT.md`](IDENTIFIER_AUDIT.md) for scope, limitations, and identifier-sanitization details.
 
@@ -311,7 +366,4 @@ If you use this dataset, code, or paper-output archive, please cite the associat
 
 ## License
 
-Unless otherwise noted, this repository is released under the Creative Commons
-Attribution 4.0 International License (CC BY 4.0). This applies to the code,
-anonymized dataset, result tables, and figure-reproduction materials included
-in the repository.
+Unless otherwise noted, this repository is released under the Creative Commons Attribution 4.0 International License (CC BY 4.0). This applies to the code, anonymized dataset, result tables, and figure-reproduction materials included in the repository.
